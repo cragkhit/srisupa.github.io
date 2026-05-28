@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Asst. Prof. Dr. Srisupa Palakvangsa Na Ayudhya</title>
+<style>
+  :root {
+    --bg: #f4f6fa;
+    --bg-2: #e9edf4;
+    --ink: #0f1a2c;
+    --ink-soft: #2a3852;
+    --muted: #5b6a82;
+    --rule: #cfd6e2;
+    --accent: #1d4ed8;     /* clean academic blue */
+    --accent-soft: #4d7cea;
+    --maxw: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .serif { font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+  .mono  { font-family: 'Arial Narrow', Arial, sans-serif; letter-spacing: 0.08em; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: color-mix(in oklab, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 17px; font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .brand .dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 999px;
+    transform: translateY(-2px); margin-right: 8px;
+  }
+  nav.nav { display: flex; gap: 28px; }
+  nav.nav a {
+    color: var(--ink-soft); text-decoration: none; font-size: 13.5px;
+    letter-spacing: 0.02em;
+  }
+  nav.nav a:hover { color: var(--accent); }
+
+  /* ---------- Layout ---------- */
+  main { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+  }
+  .section-label {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+    padding-top: 10px;
+  }
+  .section-label .num { color: var(--accent); margin-right: 8px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 110px 0 90px; border-bottom: 1px solid var(--rule); }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px;
+    align-items: end;
+  }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--accent);
+  }
+  h1.name {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: clamp(46px, 6.2vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px 0;
+  }
+  h1.name em {
+    font-style: italic; color: var(--accent);
+    font-weight: 400;
+  }
+  .role {
+    font-size: 17px; color: var(--ink-soft);
+    max-width: 540px; line-height: 1.55;
+  }
+  .role strong { color: var(--ink); font-weight: 600; }
+
+  .portrait {
+    aspect-ratio: 4 / 5;
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 62% 22%;
+    display: block;
+  }
+  .portrait .badge {
+    position: absolute; top: 16px; left: 16px;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  .hero-meta {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
+  }
+  .hero-meta .cell .k {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .hero-meta .cell .v { font-size: 15px; color: var(--ink); }
+
+  /* ---------- About ---------- */
+  .about-body p {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 22px; line-height: 1.5;
+    color: var(--ink);
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    margin: 0 0 22px 0;
+    max-width: 720px;
+  }
+  .about-body p em { font-style: italic; color: var(--accent); }
+  .focus-tags {
+    margin-top: 36px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .focus-tags span {
+    border: 1px solid var(--rule);
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 12.5px; color: var(--ink-soft);
+    background: var(--bg);
+  }
+
+  /* ---------- Timeline / Experience ---------- */
+  .timeline { display: flex; flex-direction: column; }
+  .row {
+    display: grid; grid-template-columns: 160px 1fr auto;
+    gap: 32px; align-items: baseline;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .row:last-child { border-bottom: 1px solid var(--rule); }
+  .row .when {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.04em; padding-top: 4px;
+  }
+  .row .title-l {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 22px; line-height: 1.35; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .row .org { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .row .tag {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent);
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    padding-top: 6px;
+  }
+
+  /* ---------- Education compact ---------- */
+  .edu-list { display: flex; flex-direction: column; gap: 0; }
+  .edu {
+    padding: 24px 0; border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr auto; gap: 24px;
+    align-items: baseline;
+  }
+  .edu:last-child { border-bottom: 1px solid var(--rule); }
+  .edu .deg {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 22px; letter-spacing: -0.01em;
+  }
+  .edu .inst { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .edu .loc {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ---------- Publications ---------- */
+  .pub-list { display: flex; flex-direction: column; }
+  .pub {
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 56px 1fr 140px;
+    gap: 28px;
+    align-items: baseline;
+  }
+  .pub:last-child { border-bottom: 1px solid var(--rule); }
+  .pub .idx {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px; color: var(--muted);
+    padding-top: 4px;
+  }
+  .pub .title-p {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 20px; line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .pub .authors { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+  .pub .venue {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11.5px; color: var(--accent);
+    letter-spacing: 0.04em;
+    text-align: right;
+    padding-top: 6px;
+  }
+
+  /* ---------- Awards ---------- */
+  .awards-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .award {
+    padding: 28px 28px 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .award:nth-child(2n) { padding-left: 28px; padding-right: 0; border-left: 1px solid var(--rule); }
+  .award .yr {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11.5px; letter-spacing: 0.08em;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .award h3 {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 400; font-size: 20px; line-height: 1.3;
+    letter-spacing: -0.005em;
+    margin: 0 0 6px 0;
+  }
+  .award p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  /* ---------- Consulting blocks ---------- */
+  .consult { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .consult .item { background: var(--bg); padding: 26px; }
+  .consult .item .yr {
+    font-family: 'Arial Narrow', Arial, sans-serif; font-size: 11.5px;
+    letter-spacing: 0.08em; color: var(--accent); margin-bottom: 10px;
+  }
+  .consult .item h4 {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight: 400;
+    font-size: 18px; line-height: 1.35; letter-spacing: -0.005em;
+    margin: 0 0 6px 0;
+  }
+  .consult .item p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+  /* ---------- Speaking compact list ---------- */
+  .speak {
+    columns: 2; column-gap: 56px;
+  }
+  .speak .talk {
+    break-inside: avoid;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .speak .talk:first-child { border-top: none; padding-top: 0; }
+  .speak .talk .ttl {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 17px; line-height: 1.35; letter-spacing: -0.005em;
+  }
+  .speak .talk .meta {
+    font-size: 12.5px; color: var(--muted); margin-top: 4px;
+    display: flex; gap: 10px;
+  }
+  .speak .talk .meta .y {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    color: var(--accent);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
+  .contact h2 {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px 0;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .contact .lede { font-size: 16px; color: var(--ink-soft); max-width: 460px; }
+  .contact-card {
+    border: 1px solid var(--rule);
+    padding: 28px;
+    background: var(--bg-2);
+    border-radius: 4px;
+  }
+  .contact-card .row-c {
+    display: grid; grid-template-columns: 90px 1fr; gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--rule);
+    align-items: baseline;
+  }
+  .contact-card .row-c:last-child { border-bottom: none; padding-bottom: 0; }
+  .contact-card .k {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .contact-card .v { font-size: 14.5px; color: var(--ink); }
+  .contact-card a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact-card a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px 32px;
+    max-width: var(--maxw); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12.5px; color: var(--muted);
+  }
+  footer .mono { font-family: 'Arial Narrow', Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.06em; }
+
+  /* ---------- H2 helper ---------- */
+  h2.section-title {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 36px 0;
+  }
+  h2.section-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    .pub { grid-template-columns: 36px 1fr; }
+    .pub .venue { grid-column: 2; text-align: left; padding-top: 8px; }
+    .row { grid-template-columns: 100px 1fr; }
+    .row .tag { display: none; }
+    .awards-grid, .consult { grid-template-columns: 1fr; }
+    .award:nth-child(2n) { padding-left: 0; border-left: none; }
+    .speak { columns: 1; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav.nav { display: none; }
+    main { padding: 0 20px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="dot"></span>Srisupa <span style="color:var(--muted)">— Faculty of ICT, Mahidol</span></div>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#consulting">Consulting</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" data-screen-label="Hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Faculty Profile · Mahidol University</div>
+        <h1 class="name">Asst. Prof. Dr.<br/>Srisupa <em>Palakvangsa<br/>Na Ayudhya</em></h1>
+        <p class="role">
+          Researcher and educator at the <strong>Faculty of Information and Communication Technology, Mahidol University</strong>. Working at the intersection of software engineering, health informatics, and entrepreneurship education — building tools that turn novel research into useful products.
+        </p>
+      </div>
+      <div class="portrait">
+        <img src="assets/srisupa.jpg" alt="Portrait of Asst. Prof. Dr. Srisupa Palakvangsa Na Ayudhya" />
+        <div class="badge">SRISUPA · P.</div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="cell"><div class="k">Position</div><div class="v">Assistant Professor</div></div>
+      <div class="cell"><div class="k">Department</div><div class="v">Faculty of ICT</div></div>
+      <div class="cell"><div class="k">Institution</div><div class="v">Mahidol University</div></div>
+      <div class="cell"><div class="k">Based in</div><div class="v">Salaya, Thailand</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="grid">
+      <div class="section-label"><span class="num">01</span>About</div>
+      <div class="about-body">
+        <p>
+          My work sits between <em>software engineering practice</em> and the human problems software is meant to solve — accessibility, healthcare, learning, and the long tail of small businesses trying to ship better products.
+        </p>
+        <p>
+          I lead student teams from the first messy idea through international competitions and, sometimes, into the market. I also advise public agencies on ISO/IEC 29110 process improvement, and consult on identity, forensic, and e-government systems across Thailand.
+        </p>
+        <div class="focus-tags">
+          <span>Software Engineering</span>
+          <span>ISO/IEC 29110</span>
+          <span>Health Informatics</span>
+          <span>Design Thinking</span>
+          <span>Startup Mentoring</span>
+          <span>Information Retrieval</span>
+          <span>Serious Games</span>
+          <span>Data Governance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="grid">
+      <div class="section-label"><span class="num">02</span>Experience</div>
+      <div>
+        <h2 class="section-title">A career in <em>teaching, leading, and building.</em></h2>
+        <div class="timeline">
+          <div class="row">
+            <div class="when">2018 — Present</div>
+            <div>
+              <div class="title-l">Assistant Professor</div>
+              <div class="org">Faculty of ICT, Mahidol University</div>
+            </div>
+            <div class="tag">Faculty</div>
+          </div>
+          <div class="row">
+            <div class="when">2009 — 2018</div>
+            <div>
+              <div class="title-l">Lecturer</div>
+              <div class="org">Faculty of ICT, Mahidol University</div>
+            </div>
+            <div class="tag">Faculty</div>
+          </div>
+          <div class="row">
+            <div class="when">2010 — 2014</div>
+            <div>
+              <div class="title-l">Assistant Dean for Academic Affairs</div>
+              <div class="org">Faculty of ICT, Mahidol University</div>
+            </div>
+            <div class="tag">Leadership</div>
+          </div>
+          <div class="row">
+            <div class="when">2009 — 2010</div>
+            <div>
+              <div class="title-l">Assistant Dean for Student Affairs</div>
+              <div class="org">Faculty of ICT, Mahidol University</div>
+            </div>
+            <div class="tag">Leadership</div>
+          </div>
+          <div class="row">
+            <div class="when">2006 — 2009</div>
+            <div>
+              <div class="title-l">Lecturer</div>
+              <div class="org">Dept. of Computer Science, Faculty of Science, Mahidol University</div>
+            </div>
+            <div class="tag">Faculty</div>
+          </div>
+          <div class="row">
+            <div class="when">1998 — 1999</div>
+            <div>
+              <div class="title-l">System Engineer</div>
+              <div class="org">Bangkok Bank</div>
+            </div>
+            <div class="tag">Industry</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="grid">
+      <div class="section-label"><span class="num">03</span>Education</div>
+      <div>
+        <h2 class="section-title">Training across <em>three universities, two continents.</em></h2>
+        <div class="edu-list">
+          <div class="edu">
+            <div>
+              <div class="deg">Ph.D. in Informatics</div>
+              <div class="inst">The University of Manchester</div>
+            </div>
+            <div class="loc">United Kingdom</div>
+          </div>
+          <div class="edu">
+            <div>
+              <div class="deg">M.Sc. in Advanced Computing</div>
+              <div class="inst">Imperial College London</div>
+            </div>
+            <div class="loc">United Kingdom</div>
+          </div>
+          <div class="edu">
+            <div>
+              <div class="deg">B.Sc. in Computer Science — First Class Honours</div>
+              <div class="inst">Thammasat University</div>
+            </div>
+            <div class="loc">Thailand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH / PUBLICATIONS -->
+  <section id="research">
+    <div class="grid">
+      <div class="section-label"><span class="num">04</span>Publications</div>
+      <div>
+        <h2 class="section-title">Selected <em>publications.</em></h2>
+        <div class="pub-list">
+
+          <div class="pub">
+            <div class="idx">01</div>
+            <div>
+              <div class="title-p">The Impact of COVID-19 on Software Development in Thailand</div>
+              <div class="authors">Ragkhitwetsagul, Choetkiertikul, Palakvangsa-Na-Ayudhya, Sunetnanta, Satchanawakul</div>
+            </div>
+            <div class="venue">InCIT 2025<br/>Phuket, TH</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">02</div>
+            <div>
+              <div class="title-p">A Tool for ISO/IEC 29110 Traceability Management</div>
+              <div class="authors">Khumto, Tomyim, Thonguran, Choetkiertikul, Ragkhitwetsagul, Sangaroonsilp, Palakvangsa-Na-Ayudhya, Sunetnanta</div>
+            </div>
+            <div class="venue">InCIT 2025<br/>Phuket, TH</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">03</div>
+            <div>
+              <div class="title-p">Anomaly Detection in Red Reflex Images Using Deep Learning Approaches</div>
+              <div class="authors">Kriangsakdachai, Palakvangsa-Na-Ayudhya, Kusakunniran, Devakula, Chantrasagul, Manasboonpermpool, Surachatkumtonekul, Sathianvichitr, Sangsre</div>
+            </div>
+            <div class="venue">TENCON 2022<br/>Hong Kong</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">04</div>
+            <div>
+              <div class="title-p">GlaucoVIZ: Assisting System for Early Glaucoma Detection Using Mask R-CNN</div>
+              <div class="authors">Palakvangsa-Na-Ayudhya, Sapthamrong, Sunthornwutthikrai, Sakiyalak</div>
+            </div>
+            <div class="venue">ECTI-CON 2020<br/>Bangkok, TH</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">05</div>
+            <div>
+              <div class="title-p">Game-Based for Enhancing Autism Children's Communication Skill in Thailand</div>
+              <div class="authors">Robkob, Kusakunniran, Palakvangsa-Na-Ayudhya</div>
+            </div>
+            <div class="venue">i-CREATe 2018<br/>Shanghai, CN</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">06</div>
+            <div>
+              <div class="title-p">KeptAom: Savings Management System to Increase Long Term Savings Behavior of Children</div>
+              <div class="authors">Palakvangsa-Na-Ayudhya, Pongchandaj, Kriangsakdachai, Sunthornwutthikrai</div>
+            </div>
+            <div class="venue">TENCON 2017<br/>Penang, MY</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">07</div>
+            <div>
+              <div class="title-p">UCap: A Crowdsourcing Application for the Visually Impaired and Blind on Android</div>
+              <div class="authors">Hoonlor, Palakvangsa-Na-Ayudhya, Harnmetta, Kitpanon, Khlaprasit</div>
+            </div>
+            <div class="venue">ICSEC 2015<br/>Chiang Mai, TH</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">08</div>
+            <div>
+              <div class="title-p">Nebular: a Sentiment Classification System for the Tourism Business</div>
+              <div class="authors">Palakvangsa-Na-Ayudhya, Sriarunrungreung, Thongprasan, Porcharoen</div>
+            </div>
+            <div class="venue">JCSSE 2011<br/>Nakhonpathom, TH</div>
+          </div>
+
+          <div class="pub">
+            <div class="idx">09</div>
+            <div>
+              <div class="title-p">Proximity Within Paragraph: A Measure to Enhance Document Retrieval Performance</div>
+              <div class="authors">Palakvangsa-Na-Ayudhya, Keane</div>
+            </div>
+            <div class="venue">WWW 2006<br/>Edinburgh, UK</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTING -->
+  <section id="consulting">
+    <div class="grid">
+      <div class="section-label"><span class="num">05</span>Consulting</div>
+      <div>
+        <h2 class="section-title">Advising <em>industry &amp; government.</em></h2>
+        <div class="consult">
+          <div class="item">
+            <div class="yr">2024 — 2025</div>
+            <h4>ISO/IEC 29110 Basic Profile Process Improvement</h4>
+            <p>Consultant — Digital Economy Promotion Agency (DEPA) &amp; Federation of Thai Industries.</p>
+          </div>
+          <div class="item">
+            <div class="yr">2023 — 2024</div>
+            <h4>e-Passport Production &amp; Service System (Phase 3)</h4>
+            <p>Consultant — Ministry of Foreign Affairs.</p>
+          </div>
+          <div class="item">
+            <div class="yr">2022 — 2023</div>
+            <h4>ISO/IEC 29110 Basic Profile (FY2022)</h4>
+            <p>Consultant — DEPA &amp; Federation of Thai Industries.</p>
+          </div>
+          <div class="item">
+            <div class="yr">2021</div>
+            <h4>ISO/IEC 29110 Service Delivery Profile (FY2021)</h4>
+            <p>Consultant — DEPA &amp; Federation of Thai Industries.</p>
+          </div>
+          <div class="item">
+            <div class="yr">2021</div>
+            <h4>ICT Systems Consulting Project</h4>
+            <p>Central Institute of Forensic Science (FY2021).</p>
+          </div>
+          <div class="item">
+            <div class="yr">2020 — 2021</div>
+            <h4>e-Passport Production &amp; Service System (Phase 3)</h4>
+            <p>Consultant — Ministry of Foreign Affairs.</p>
+          </div>
+          <div class="item">
+            <div class="yr">2018 — 2019</div>
+            <h4>ICT Systems Consulting Project</h4>
+            <p>Central Institute of Forensic Science (FY2019).</p>
+          </div>
+          <div class="item">
+            <div class="yr">2017 — 2018</div>
+            <h4>Identity Database Integration (Fingerprint)</h4>
+            <p>Consulting Committee — Central Institute of Forensic Science, Ministry of Justice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="grid">
+      <div class="section-label"><span class="num">06</span>Selected Awards</div>
+      <div>
+        <h2 class="section-title">Student projects, <em>international recognition.</em></h2>
+        <div class="awards-grid">
+          <div class="award">
+            <div class="yr">2020 · NRCT</div>
+            <h3>GlaucoVIZ — Honorable Mention</h3>
+            <p>NRCT Invention Awards 2020, ICT &amp; Communication Arts (Team TripleX).</p>
+          </div>
+          <div class="award">
+            <div class="yr">2019 · NSC</div>
+            <h3>GlaucoVIZ — 2nd Runner Up</h3>
+            <p>21st National Software Contest, Health &amp; Medical category (Team TripleX).</p>
+          </div>
+          <div class="award">
+            <div class="yr">2018 · i-CREATe</div>
+            <h3>Suesan — Global Finalist</h3>
+            <p>Global Student Innovation Challenge 2018, Shanghai, China.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2017 · NSC</div>
+            <h3>TappTact — 1st Runner Up</h3>
+            <p>19th National Software Contest, Mobile Application category (Team Mixtio).</p>
+          </div>
+          <div class="award">
+            <div class="yr">2016 · APICTA</div>
+            <h3>Prothier — Merit Award</h3>
+            <p>Asia Pacific ICT Alliance Awards, Tertiary Student Project, Taipei.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2016 · TICTA</div>
+            <h3>Prothier — Winner</h3>
+            <p>Thailand ICT Awards 2016, Tertiary Student Project category.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2013 · Imagine Cup</div>
+            <h3>Vocable World — 2nd Runner Up</h3>
+            <p>Microsoft Imagine Cup Worldwide 2013, Windows 8 Challenge, Saint Petersburg.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2012 · Imagine Cup</div>
+            <h3>Verdant Fantasy — 1st Place</h3>
+            <p>Microsoft Imagine Cup Worldwide 2012, Game Design (PC/Xbox), Sydney.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2011 · Imagine Cup</div>
+            <h3>Junk Master — 1st Runner Up</h3>
+            <p>Microsoft Imagine Cup Worldwide 2011, Game Design (PC/Xbox), New York.</p>
+          </div>
+          <div class="award">
+            <div class="yr">2010 · NSC</div>
+            <h3>TAGMe Travelling Book — 1st Prize</h3>
+            <p>12th National Software Contest, RFID Application for Industry category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section id="speaking">
+    <div class="grid">
+      <div class="section-label"><span class="num">07</span>Speaking</div>
+      <div>
+        <h2 class="section-title">Recent <em>talks &amp; guest lectures.</em></h2>
+        <div class="speak">
+          <div class="talk">
+            <div class="ttl">How to Pitch — Microsoft AI Hackathon 2025</div>
+            <div class="meta"><span class="y">2025</span><span>Microsoft Thailand</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Business Process Management &amp; BI Tools</div>
+            <div class="meta"><span class="y">2025</span><span>Chiang Mai University</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Introduction to Data Analytics using Power BI</div>
+            <div class="meta"><span class="y">2024</span><span>Chiang Mai University</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">International Presentation Skills for Global Competitions</div>
+            <div class="meta"><span class="y">2023</span><span>NSTDA</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Digital Games in Health Science Education</div>
+            <div class="meta"><span class="y">2023</span><span>Siriraj Hospital</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Upskilling: Preparing for the Future of Education</div>
+            <div class="meta"><span class="y">2023</span><span>Thammasat University</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Design Thinking — Learning by Doing</div>
+            <div class="meta"><span class="y">2023</span><span>Thammasat University</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Resilience Mindset for Future University</div>
+            <div class="meta"><span class="y">2022</span><span>MHESI Digital University Panel</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Creative Design Thinking &amp; Pitching</div>
+            <div class="meta"><span class="y">2022</span><span>Thammasat University</span></div>
+          </div>
+          <div class="talk">
+            <div class="ttl">Creative Design Thinking</div>
+            <div class="meta"><span class="y">2021</span><span>Mahidol Graduate School</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="grid">
+      <div class="section-label"><span class="num">08</span>Contact</div>
+      <div>
+        <div class="contact-grid">
+          <div>
+            <h2>Let's <em>work together.</em></h2>
+            <p class="lede">Open to research collaborations, thesis supervision, public-sector consulting on software process and data governance, and guest-lecture invitations.</p>
+          </div>
+          <div class="contact-card">
+            <div class="row-c">
+              <div class="k">Office</div>
+              <div class="v">Faculty of ICT, Mahidol University<br/>999 Phuttamonthon 4 Rd,<br/>Salaya, Nakhonpathom 73170</div>
+            </div>
+            <div class="row-c">
+              <div class="k">Mobile</div>
+              <div class="v">083 928 2455</div>
+            </div>
+            <div class="row-c">
+              <div class="k">Tel · Fax</div>
+              <div class="v">02 441-0909 · 02 441-0808</div>
+            </div>
+            <div class="row-c">
+              <div class="k">Faculty</div>
+              <div class="v"><a href="https://www.ict.mahidol.ac.th" target="_blank" rel="noopener">ict.mahidol.ac.th</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Srisupa Palakvangsa Na Ayudhya</div>
+  <div class="mono">FACULTY · ICT · MAHIDOL UNIVERSITY</div>
+</footer>
+
+</body>
+</html>
